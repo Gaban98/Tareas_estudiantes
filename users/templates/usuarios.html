@@ -1,0 +1,30 @@
+{% extends 'layoutusers.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django</title>
+</head>
+<body>
+    <!-- <h1 class="titulo">Usuarios</h1>
+    <ul class="nav">
+        {% for k in usuarios %}
+        <li class="listas"> {{ k.nombre }} </li>
+        <ul class="listados"> {{ k.apellido }} </ul>
+        {% endfor %}
+    </ul> -->
+
+    {% block content %}
+    <h1 class="titulo">Usuarios registrados</h1>
+    <ul class="nav">
+        {% for k in usuarios %}
+        <li class="listas"> {{ k.nombre }} </li>
+            <li class="listados"> {{ k.apellido }} </li>
+            <li class="list2">{{ k.correo }}</li>
+        {% endfor %}
+    {% endblock %}
+
+</body>
+</html>

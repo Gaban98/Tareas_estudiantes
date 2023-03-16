@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+    {% block content %}
+    <style>
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: green;
+            border: 1px solid #fff;
+        };
+    </style>
+    <!-- esto es para dinamizar el contenido cambiarte -->
+    <h1>Lista de tareas</h1>
+    <div class="container text-center">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Tarea</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in tarea %}
+                <tr>
+                    <td>{{ x.tarea }}</td>
+                    {% if x.completado %}
+                    <td>Completada</td>
+                        {% else %}
+                    <td>Pendiente</td>
+                    {% endif %}
+                    <td>
+                        <button class="btn btn-outline-danger">
+                            <a style="text-decoration: none;" href="{% url 'eliminar' x.id %}"> eliminar </a>  
+                        </button>
+                        <button  class="btn btn-outline-success">
+                            <a style="text-decoration: none;" href="{% url 'editar' x.id %}">  editar  </a> 
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+        <button type="button" class="btn btn-outline-dark">
+            <a style="text-decoration: none;" href="{% url 'agregar' %}"> agregar tarea </a>
+        </button>
+    <!-- esto es para redirigir hacia otro .html -->
+    </div>
+    {% endblock %}
